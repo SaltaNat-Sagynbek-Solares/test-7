@@ -1,9 +1,8 @@
-import { ItemProps } from "../type.ts";
+import type {ItemProps} from "../type.ts";
 
-const Item = ({id, title, price, onAdd}: ItemProps) => {
+const Item = ({ title, price, }: ItemProps) => {
   return (
-    <div className="item" onClick={onAdd}>
-      <span>{id}</span>
+    <div className="item">
       <span>{title}</span>
       <span>{price}</span>
     </div>
