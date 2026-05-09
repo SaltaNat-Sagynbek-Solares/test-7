@@ -1,4 +1,5 @@
 import type { ItemProps } from "../../type.ts";
+import "./Expenselnfo.css"
 
 interface Props {
   cart: ItemProps[];

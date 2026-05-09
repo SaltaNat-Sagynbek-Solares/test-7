@@ -1,4 +1,5 @@
 import type { ItemProps } from "../type.ts";
+import "./ExpenseItems.css";
 
 interface Props {
   items: ItemProps[];
@@ -13,7 +14,7 @@ const ExpenseItem = ({ items, removeItem }: Props) => {
         <div className='cart_item' key={item.id}>
           <span>{item.title}</span>
           <span>  {item.quantity} x {item.price * item.quantity} </span>
-          <button onClick={() => removeItem(item.id)}> X </button>
+          <button className='btn-remove' onClick={() => removeItem(item.id)}> X </button>
         </div>
       ))}
     </>

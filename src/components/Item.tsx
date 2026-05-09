@@ -1,4 +1,5 @@
 import type {ItemProps} from "../type.ts";
+import "./Item.css";
 
 interface  Props extends ItemProps {
   onClick: () => void ;

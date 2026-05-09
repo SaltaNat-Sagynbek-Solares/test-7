@@ -37,7 +37,7 @@ const App = () => {
 
   return (
     <div className='App-container'>
-      <div>
+      <div className='order-details'>
         <h2> Order Details:</h2>
         <ExpenseItem items={cart} removeItem={removeItem}/>
         <ExpenseInfo cart={cart}/>
