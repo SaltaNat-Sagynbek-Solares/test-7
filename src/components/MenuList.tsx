@@ -3,15 +3,16 @@ import Item from "./Item.tsx";
 
 interface MenuListProps {
   items: ItemProps[];
+  onClick: (id: string) => void;
 }
 
-const MenuList = ({ items, } : MenuListProps) => {
+const MenuList = ({ items, onClick} : MenuListProps) => {
   return (
     <div className='menu-container'>
       <h2 className='menu-list-title'>Add items</h2>
       <div>
         {items.map((item) =>(
-          <Item key={item.id} {...item}/>
+          <Item key={item.id} {...item} onClick={() => onClick(item.id)}/>
         ))}
       </div>
     </div>

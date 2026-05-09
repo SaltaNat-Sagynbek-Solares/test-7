@@ -1,10 +1,14 @@
 import type {ItemProps} from "../type.ts";
 
-const Item = ({ title, price, }: ItemProps) => {
+interface  Props extends ItemProps {
+  onClick: () => void ;
+}
+
+const Item = ({ title, price, onClick}: Props) => {
   return (
-    <div className="item">
+    <div className="item" onClick={onClick}>
       <span>{title}</span>
-      <span>{price}</span>
+      <span>{price}KGS</span>
     </div>
   );
 };

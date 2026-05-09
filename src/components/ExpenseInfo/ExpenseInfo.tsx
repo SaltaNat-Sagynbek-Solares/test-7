@@ -1,0 +1,32 @@
+import type { ItemProps } from "../../type.ts";
+
+interface Props {
+  cart: ItemProps[];
+}
+
+const ExpenseInfo = ({ cart }: Props) => {
+  const total = cart.reduce((sum, item) => sum + item.price, 0);
+
+  const sumByItem = cart.reduce((acc, item) => {
+    acc[item.title] = (acc[item.title] || 0) + item.price;
+    return acc;
+  }, {} as Record<string, number>);
+
+  const uniqueItems = Object.keys(sumByItem);
+
+  return (
+    <div>
+      <p>Total spent: <b>{total} KGS</b></p>
+      <div>
+        {uniqueItems.map((title) => (
+          <div key={title}>
+            <span>{title}</span>
+            <span>{sumByItem[title]} KGS</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default ExpenseInfo;
