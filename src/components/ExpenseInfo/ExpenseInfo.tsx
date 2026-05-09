@@ -20,8 +20,7 @@ const ExpenseInfo = ({ cart }: Props) => {
       <div>
         {uniqueItems.map((title) => (
           <div key={title}>
-            <span>{title}</span>
-            <span>{sumByItem[title]} KGS</span>
+
           </div>
         ))}
       </div>

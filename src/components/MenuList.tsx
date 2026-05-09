@@ -1,5 +1,6 @@
 import type {ItemProps} from "../type.ts";
 import Item from "./Item.tsx";
+import "./MenuList.css"
 
 interface MenuListProps {
   items: ItemProps[];

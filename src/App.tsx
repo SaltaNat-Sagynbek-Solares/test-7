@@ -3,6 +3,7 @@ import {useState} from "react";
 import type {ItemProps} from "./type.ts";
 import ExpenseItem from "./ExpenseItems/ExpenseItems.tsx";
 import ExpenseInfo from "./components/ExpenseInfo/ExpenseInfo.tsx";
+import "./App.css"
 
 const menuItems : ItemProps[] =[
   {id: "1", title: "Hamburger ", price:80, quantity: 1 },
