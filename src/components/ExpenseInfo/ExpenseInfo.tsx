@@ -5,10 +5,10 @@ interface Props {
 }
 
 const ExpenseInfo = ({ cart }: Props) => {
-  const total = cart.reduce((sum, item) => sum + item.price, 0);
+  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   const sumByItem = cart.reduce((acc, item) => {
-    acc[item.title] = (acc[item.title] || 0) + item.price;
+    acc[item.title] = (acc[item.title] || 0) + item.price * item.quantity;
     return acc;
   }, {} as Record<string, number>);
 
