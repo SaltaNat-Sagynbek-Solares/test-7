@@ -6,23 +6,16 @@ interface Props {
 }
 
 const ExpenseItem = ({ items, removeItem }: Props) => {
-  const total = items.reduce((sum, item) => sum + item.price, 0);
 
   return (
     <>
-      {items.map((item, index) => (
-        <div className="cart-item" key={index}>
+      {items.map((item) => (
+        <div className='cart_item' key={item.id}>
           <span>{item.title}</span>
-          <div className="cart-item-info">
-            <span>{item.price} KGS</span>
-            <button className="btn" onClick={() => removeItem(item.id)}>X</button>
-          </div>
+          <span>  {item.quantity} x {item.price * item.quantity} </span>
+          <button onClick={() => removeItem(item.id)}> X </button>
         </div>
       ))}
-      <div className="cart-total">
-        <span>Total price:</span>
-        <strong>{total} KGS</strong>
-      </div>
     </>
   );
 };

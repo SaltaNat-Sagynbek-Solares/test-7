@@ -2,22 +2,32 @@ import MenuList from "./components/MenuList.tsx";
 import {useState} from "react";
 import type {ItemProps} from "./type.ts";
 import ExpenseItem from "./ExpenseItems/ExpenseItems.tsx";
+import ExpenseInfo from "./components/ExpenseInfo/ExpenseInfo.tsx";
 
 const menuItems : ItemProps[] =[
-  {id: "1", title: "Hamburger ", price:80, },
-  {id: "2", title: "Coffee " , price: 70, },
-  {id: "3", title:"Cheeseburger ", price: 90, },
-  {id: "4", title:"Tea ", price: 50, },
-  {id: "5", title:"Fries ", price: 45, },
-  {id: "6", title:"Cole ", price: 40, },
+  {id: "1", title: "Hamburger ", price:80, quantity: 1 },
+  {id: "2", title: "Coffee " , price: 70, quantity: 1 },
+  {id: "3", title:"Cheeseburger ", price: 90, quantity: 1 },
+  {id: "4", title:"Tea ", price: 50, quantity: 1 },
+  {id: "5", title:"Fries ", price: 45, quantity: 1},
+  {id: "6", title:"Cole ", price: 40, quantity: 1},
   ]
 
 const App = () => {
   const [cart, setCart] = useState<ItemProps[]>([]);
 
   const handleClick = ( id: string) =>{
-    const item = menuItems.find((item) => item.id ===id);
-    if(item) setCart([...cart, item]);
+    const menuItem = menuItems.find((item) => item.id ===id);
+    if(!menuItem) return;
+
+    const existsItem = cart.find((item) => item.id === id);
+    if(existsItem) {
+      setCart(cart.map((item)=>
+        item.id === id
+        ? {...item, quantity:item.quantity + 1} : item));
+    } else {
+      setCart([...cart, {...menuItem, quantity: 1 }]);
+    }
   };
 
   const removeItem = (id: string) => {
@@ -29,6 +39,7 @@ const App = () => {
       <div>
         <h2> Order Details:</h2>
         <ExpenseItem items={cart} removeItem={removeItem}/>
+        <ExpenseInfo cart={cart}/>
       </div>
       <div>
         <MenuList items={menuItems} onClick={handleClick} />
